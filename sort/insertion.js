@@ -1,6 +1,7 @@
 // Insertion Sort is best for almost fully sorted arrays
-// Good for small data sets
 // Works for 'live' incoming data, arrays that are being added to in real time
+// Good for small data sets
+
 // Big O (time) = best: O(N), worst: O(N^2), average: (N^2)
 // Bug O (space) = O(1)
 
