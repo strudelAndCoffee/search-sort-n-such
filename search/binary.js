@@ -5,8 +5,7 @@ function binarySearch(arr, val) {
 
   while (start <= end) {
     if (arr[mid] === val) return mid;
-    if (arr[mid] > val) end = mid - 1;
-    else start = mid + 1;
+    arr[mid] > val ? (end = mid - 1) : (start = mid + 1);
     mid = Math.ceil((end + start) / 2);
   }
   return -1;

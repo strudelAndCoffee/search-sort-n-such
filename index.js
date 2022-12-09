@@ -3,7 +3,7 @@ const { binarySearch } = require("./search");
 
 const arr = [2, 5, 3, 1, 7, 4];
 
-// bubbleSort(arr);
+bubbleSort(arr);
 // selectioSort(arr);
 // insertionSort(arr);
 
