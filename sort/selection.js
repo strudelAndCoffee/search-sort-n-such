@@ -6,7 +6,7 @@
 
 const { swap } = require("../utils.js");
 
-function selectionSort(arr) {
+module.exports = function selectionSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -14,6 +14,4 @@ function selectionSort(arr) {
     }
     if (i !== min) swap(arr, i, min);
   }
-}
-
-module.exports = selectionSort;
+};

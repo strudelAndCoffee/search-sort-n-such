@@ -1,4 +1,4 @@
-function binarySearch(arr, val) {
+module.exports = function binarySearch(arr, val) {
   let start = 0;
   let end = arr.length - 1;
   let mid = Math.ceil(end / 2);
@@ -9,6 +9,4 @@ function binarySearch(arr, val) {
     mid = Math.ceil((end + start) / 2);
   }
   return -1;
-}
-
-module.exports = binarySearch;
+};

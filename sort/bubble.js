@@ -6,7 +6,7 @@
 
 const { swap } = require("../utils.js");
 
-function bubbleSort(arr) {
+module.exports = function bubbleSort(arr) {
   let noSwap;
   for (let i = arr.length; i > 0; i--) {
     noSwap = true;
@@ -18,6 +18,4 @@ function bubbleSort(arr) {
     }
     if (noSwap) break;
   }
-}
-
-module.exports = bubbleSort;
+};
