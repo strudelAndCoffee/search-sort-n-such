@@ -1,5 +1,10 @@
-const { bubbleSort, selectioSort, insertionSort } = require("./sort");
-const { binarySearch } = require("./search");
+const {
+  bubbleSort,
+  selectioSort,
+  insertionSort,
+  mergeSort,
+} = require('./sort');
+const { binarySearch } = require('./search');
 
 const arr = [2, 5, 3, 1, 7, 4];
 
