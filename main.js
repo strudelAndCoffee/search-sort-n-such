@@ -16,7 +16,7 @@ shuffle(arr);
 // selectioSort(arr);
 // insertionSort(arr);
 // const newArr = mergeSort(arr);
-// const newArr = quickSort(arr);
+const newArr = quickSort(arr);
 
 // console.log(arr);
-// console.log(newArr);
+console.log(newArr);
