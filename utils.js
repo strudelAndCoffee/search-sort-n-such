@@ -44,7 +44,7 @@ function findMedian(arr) {
   }
 
   let vals = Object.values(sampleData);
-  if (total < 1000) {
+  if (sampleSize < 1000) {
     insertionSort(vals);
   } else {
     const sortedVals = mergeSort(vals);
