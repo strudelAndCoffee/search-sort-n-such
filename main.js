@@ -1,4 +1,4 @@
-import { linearSearch, binarySearch } from './search/index.js';
+// import { linearSearch, binarySearch } from './search/index.js';
 import {
   bubbleSort,
   selectioSort,
@@ -6,13 +6,17 @@ import {
   mergeSort,
   quickSort,
 } from './sort/index.js';
+import { randomBetween, shuffle, findMedian } from './utils.js';
 
-// const arr = [2, 5, 3, 1, 7, 4];
-// console.log(arr);
+const arr = [];
+for (let i = 50; i > 0; i--) arr.push(randomBetween(1, 100));
+shuffle(arr);
 
-// // bubbleSort(arr);
-// // selectioSort(arr);
-// // insertionSort(arr);
+// bubbleSort(arr);
+// selectioSort(arr);
+// insertionSort(arr);
+// const newArr = mergeSort(arr);
 // const newArr = quickSort(arr);
 
+// console.log(arr);
 // console.log(newArr);

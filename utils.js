@@ -15,7 +15,7 @@ function swap(arr, i1, i2) {
   [arr[i1], arr[i2]] = [arr[i2], arr[i1]];
 }
 
-async function findMedian(arr) {
+function findMedian(arr) {
   let sampleData = {};
 
   const total = arr.length;
@@ -41,16 +41,10 @@ async function findMedian(arr) {
     }
   }
 
-  const median = await import('./sort/insertion.js').then(
-    ({ default: insertionSort }) => {
-      let vals = Object.values(sampleData);
-      insertionSort(vals);
+  let vals = Object.values(sampleData);
+  vals.sort((a, b) => a - b);
 
-      return vals[Math.floor(sampleSize / 2)];
-    }
-  );
-
-  return median;
+  return vals[Math.floor(sampleSize / 2)];
 }
 
 export { randomBetween, shuffle, swap, findMedian };
