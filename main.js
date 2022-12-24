@@ -1,10 +1,10 @@
-const { linearSearch, binarySearch } = require('./search');
-const {
+import { linearSearch, binarySearch } from './search/index.js';
+import {
   bubbleSort,
   selectioSort,
   insertionSort,
   mergeSort,
-} = require('./sort');
+} from './sort/index.js';
 
 const arr = [2, 5, 3, 1, 7, 4];
 console.log(arr);
@@ -12,6 +12,6 @@ console.log(arr);
 // bubbleSort(arr);
 // selectioSort(arr);
 // insertionSort(arr);
-mergeSort(arr);
+const newArr = mergeSort(arr);
 
-console.log(arr);
+console.log(newArr);

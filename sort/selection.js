@@ -4,9 +4,9 @@
 // Big O (time) = best: O(N^2), worst: O(N^2), average: (N^2)
 // Bug O (space) = O(1)
 
-const { swap } = require("../utils.js");
+import { swap } from '../utils.js';
 
-module.exports = function selectionSort(arr) {
+export default function selectionSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     let min = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -14,4 +14,4 @@ module.exports = function selectionSort(arr) {
     }
     if (i !== min) swap(arr, i, min);
   }
-};
+}

@@ -5,7 +5,7 @@
 // Big O (time) = best: O(N), worst: O(N^2), average: (N^2)
 // Bug O (space) = O(1)
 
-module.exports = function insertionSort(arr) {
+export default function insertionSort(arr) {
   let current;
   for (let i = 1; i < arr.length; i++) {
     current = arr[i];
@@ -16,4 +16,4 @@ module.exports = function insertionSort(arr) {
     }
     arr[j + 1] = current;
   }
-};
+}

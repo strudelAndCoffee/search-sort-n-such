@@ -1,7 +1,7 @@
 // Big O (time) = best: O(1), worst: O(log N), average: O(log N)
 // Big O (space) = O(1)
 
-module.exports = function binarySearch(arr, val) {
+export default function binarySearch(arr, val) {
   let start = 0;
   let end = arr.length - 1;
   let mid = Math.ceil(end / 2);
@@ -12,4 +12,4 @@ module.exports = function binarySearch(arr, val) {
     mid = Math.ceil((end + start) / 2);
   }
   return -1;
-};
+}

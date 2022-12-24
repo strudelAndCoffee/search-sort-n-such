@@ -4,9 +4,9 @@
 // Big O (time) = best: O(N), worst: O(N^2), average: (N^2)
 // Bug O (space) = O(1)
 
-const { swap } = require("../utils.js");
+import { swap } from '../utils.js';
 
-module.exports = function bubbleSort(arr) {
+export default function bubbleSort(arr) {
   let noSwap;
   for (let i = arr.length; i > 0; i--) {
     noSwap = true;
@@ -18,4 +18,4 @@ module.exports = function bubbleSort(arr) {
     }
     if (noSwap) break;
   }
-};
+}

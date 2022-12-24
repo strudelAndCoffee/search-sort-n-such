@@ -1,4 +1,4 @@
-const linearSearch = require("./linear.js");
-const binarySearch = require("./binary.js");
+import linearSearch from './linear.js';
+import binarySearch from './binary.js';
 
-module.exports = { linearSearch, binarySearch };
+export { linearSearch, binarySearch };
