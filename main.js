@@ -9,7 +9,7 @@ import {
 import { randomBetween, shuffle, findMedian } from './utils.js';
 
 const arr = [];
-for (let i = 50; i > 0; i--) arr.push(randomBetween(1, 100));
+for (let i = 100; i > 0; i--) arr.push(randomBetween(1, 100));
 shuffle(arr);
 
 // bubbleSort(arr);

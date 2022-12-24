@@ -1,3 +1,5 @@
+import { insertionSort, mergeSort } from './sort/index.js';
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * max) + min;
 }
@@ -42,7 +44,12 @@ function findMedian(arr) {
   }
 
   let vals = Object.values(sampleData);
-  vals.sort((a, b) => a - b);
+  if (total < 1000) {
+    insertionSort(vals);
+  } else {
+    const sortedVals = mergeSort(vals);
+    vals = sortedVals;
+  }
 
   return vals[Math.floor(sampleSize / 2)];
 }
