@@ -1,6 +1,13 @@
-import { swap } from '../utils.js';
+// Quick Sort is best for large data sets
+// Worst case time complexity if array is already sorted:
+// -- pick first pivot to be either random item or median value of items
 
-const pivot = (arr, start = 0, end = arr.length - 1) => {
+// Big O (time) = best: O(N log N), worst: O(N^2), average: (N log N)
+// Bug O (space) = O(log N)
+
+import { swap, findMedian } from '../utils.js';
+
+const pivot = (arr, start = findMedian(arr), end = arr.length - 1) => {
   let pivot = arr[start];
   let swapIndex = start;
 
