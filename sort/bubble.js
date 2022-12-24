@@ -2,7 +2,7 @@
 // Good for small data sets
 
 // Big O (time) = best: O(N), worst: O(N^2), average: (N^2)
-// Bug O (space) = O(1)
+// Big O (space) = O(1)
 
 import { swap } from '../utils.js';
 

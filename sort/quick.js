@@ -3,7 +3,7 @@
 // -- pick first pivot to be either random item or median value of items
 
 // Big O (time) = best: O(N log N), worst: O(N^2), average: (N log N)
-// Bug O (space) = O(log N)
+// Big O (space) = O(log N)
 
 import { swap, findMedian } from '../utils.js';
 

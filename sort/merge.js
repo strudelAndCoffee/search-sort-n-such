@@ -2,7 +2,7 @@
 // Not always efficient for small data sets
 
 // Big O (time) = best: O(N log N), worst: O(N log N), average: (N log N)
-// Bug O (space) = O(N)
+// Big O (space) = O(N)
 
 const merge = (arr1, arr2) => {
   let result = [];
