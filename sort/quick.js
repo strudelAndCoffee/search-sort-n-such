@@ -5,7 +5,8 @@
 // Big O (time) = best: O(N log N), worst: O(N^2), average: (N log N)
 // Big O (space) = O(log N)
 
-import { swap, findMedian } from '../utils.js';
+import { findMedian } from '../helpers/findMedian.js';
+import { swap } from '../helpers/utils.js';
 
 const pivot = (arr, start = findMedian(arr), end = arr.length - 1) => {
   let pivot = arr[start];
@@ -28,5 +29,6 @@ export default function quickSort(arr, left = 0, right = arr.length - 1) {
     quickSort(arr, left, pivotIndex - 1);
     quickSort(arr, pivotIndex + 1, right);
   }
+  // Returns a new sorted array, does not mutate original array
   return arr;
 }

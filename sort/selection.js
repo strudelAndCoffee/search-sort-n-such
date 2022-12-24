@@ -4,7 +4,7 @@
 // Big O (time) = best: O(N^2), worst: O(N^2), average: (N^2)
 // Big O (space) = O(1)
 
-import { swap } from '../utils.js';
+import { swap } from '../helpers/utils.js';
 
 export default function selectionSort(arr) {
   for (let i = 0; i < arr.length; i++) {
