@@ -38,21 +38,6 @@ export default class SinglyLinkedList {
     this.length++;
     return this;
   }
-  insert(index, val) {
-    if (index < 0 || index > this.length) return false;
-    if (index === 0) return !!this.unshift(val);
-    if (index === this.length) return !!this.push(val);
-
-    let node = new Node(val);
-    let prev = get(index - 1);
-    let next = prev.next;
-    prev.next = node;
-    node.next = next;
-    this.length++;
-
-    return true;
-  }
-
   pop() {
     if (this.length === 0) return undefined;
 
@@ -105,5 +90,31 @@ export default class SinglyLinkedList {
 
     node.val = val;
     return true;
+  }
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+
+    let node = new Node(val);
+    let prev = this.get(index - 1);
+    let next = prev.next;
+    prev.next = node;
+    node.next = next;
+    this.length++;
+
+    return true;
+  }
+  remove(index) {
+    if (index < 0 || index >= this.length) return null;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    let prev = this.get(index - 1);
+    let target = prev.next;
+    prev.next = target.next;
+    this.length--;
+
+    return target;
   }
 }
