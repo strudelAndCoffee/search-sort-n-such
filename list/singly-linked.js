@@ -44,6 +44,19 @@ export default class SinglyLinkedList {
       this.tail = null;
     }
 
-    return current;
+    return current.val;
+  }
+  shift() {
+    if (this.length === 0) return undefined;
+
+    let current = this.head;
+    this.head = current.next;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return current.val;
   }
 }
