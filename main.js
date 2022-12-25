@@ -18,3 +18,5 @@ list.push('!');
 list.print();
 list.reverse();
 list.print();
+console.log(list.head);
+console.log(list.tail);
