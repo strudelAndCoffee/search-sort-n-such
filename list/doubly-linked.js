@@ -28,7 +28,7 @@ export default class DoublyLinkedList {
 
     return this;
   }
-
+  unshift(val) {}
   pop() {
     if (this.length === 0) return undefined;
 
@@ -44,5 +44,21 @@ export default class DoublyLinkedList {
     this.length--;
 
     return popped;
+  }
+  shift() {
+    if (this.length === 0) return undefined;
+
+    let shifted = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = shifted.next;
+      this.head.prev = null;
+      shifted.next = null;
+    }
+    this.length--;
+
+    return shifted;
   }
 }
