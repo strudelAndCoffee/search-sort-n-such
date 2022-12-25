@@ -15,6 +15,8 @@ list.push('hello');
 list.push('world');
 list.push('!');
 
+list.print();
+list.reverse();
+list.print();
 console.log(list.head);
-console.log(list.head.next);
-console.log(list.head.next.next);
+console.log(list.tail);
