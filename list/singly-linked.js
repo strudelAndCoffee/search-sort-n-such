@@ -85,4 +85,11 @@ export default class SinglyLinkedList {
 
     return node;
   }
+  set(index, val) {
+    let node = this.get(index);
+    if (node == null) return false;
+
+    node.val = val;
+    return true;
+  }
 }
