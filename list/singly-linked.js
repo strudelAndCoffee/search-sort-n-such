@@ -38,6 +38,20 @@ export default class SinglyLinkedList {
     this.length++;
     return this;
   }
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+
+    let node = new Node(val);
+    let prev = get(index - 1);
+    let next = prev.next;
+    prev.next = node;
+    node.next = next;
+    this.length++;
+
+    return true;
+  }
 
   pop() {
     if (this.length === 0) return undefined;
