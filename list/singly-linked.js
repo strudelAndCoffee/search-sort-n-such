@@ -54,7 +54,7 @@ export default class SinglyLinkedList {
     let prev = current;
     while (current.next) {
       prev = current;
-      current = current.next;
+      current = prev.next;
     }
 
     this.tail = prev;
@@ -70,15 +70,16 @@ export default class SinglyLinkedList {
   shift() {
     if (this.length === 0) return undefined;
 
-    let current = this.head;
-    this.head = current.next;
+    let shifted = this.head;
+    this.head = shifted.next;
     this.length--;
     if (this.length === 0) {
       this.head = null;
       this.tail = null;
     }
+    shifted.next = null;
 
-    return current;
+    return shifted;
   }
 
   get(index) {
@@ -122,6 +123,7 @@ export default class SinglyLinkedList {
     let prev = this.get(index - 1);
     let target = prev.next;
     prev.next = target.next;
+    target.next = null;
     this.length--;
 
     return target;

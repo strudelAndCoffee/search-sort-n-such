@@ -75,4 +75,27 @@ export default class DoublyLinkedList {
 
     return shifted;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined;
+
+    let count, current;
+    if (index <= this.length / 2) {
+      current = this.head;
+      count = 0;
+      while (count <= index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      current = this.tail;
+      count = this.length - 1;
+      while (count > index) {
+        current = current.prev;
+        count--;
+      }
+    }
+
+    return current;
+  }
 }
