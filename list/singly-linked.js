@@ -25,6 +25,19 @@ export default class SinglyLinkedList {
     this.length++;
     return this;
   }
+  unshift(val) {
+    let node = new Node(val);
+
+    if (!this.head) {
+      this.head = node;
+      this.tail = this.head;
+    } else {
+      node.next = this.head;
+      this.head = node;
+    }
+    this.length++;
+    return this;
+  }
 
   pop() {
     if (this.length === 0) return undefined;
