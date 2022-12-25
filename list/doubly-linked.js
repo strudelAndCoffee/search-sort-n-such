@@ -28,7 +28,21 @@ export default class DoublyLinkedList {
 
     return this;
   }
-  unshift(val) {}
+  unshift(val) {
+    let node = new Node(val);
+
+    if (this.length === 0) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.head.prev = node;
+      node.next = this.head;
+      this.head = node;
+    }
+    this.length++;
+
+    return this;
+  }
   pop() {
     if (this.length === 0) return undefined;
 
