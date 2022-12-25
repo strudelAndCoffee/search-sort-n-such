@@ -44,11 +44,11 @@ export default class SinglyLinkedList {
 
     let current = this.head;
     let prev = current;
-
     while (current.next) {
       prev = current;
       current = current.next;
     }
+
     this.tail = prev;
     this.tail.next = null;
     this.length--;
@@ -57,7 +57,7 @@ export default class SinglyLinkedList {
       this.tail = null;
     }
 
-    return current.val;
+    return current;
   }
   shift() {
     if (this.length === 0) return undefined;
@@ -70,6 +70,19 @@ export default class SinglyLinkedList {
       this.tail = null;
     }
 
-    return current.val;
+    return current;
+  }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+
+    let node = this.head;
+    let count = 0;
+    while (count < index) {
+      node = node.next;
+      count++;
+    }
+
+    return node;
   }
 }
