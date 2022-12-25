@@ -73,7 +73,7 @@ export default class SinglyLinkedList {
   }
 
   get(index) {
-    if (index < 0 || index >= this.length) return null;
+    if (index < 0 || index >= this.length) return undefined;
 
     let node = this.head;
     let count = 0;
@@ -106,7 +106,7 @@ export default class SinglyLinkedList {
     return true;
   }
   remove(index) {
-    if (index < 0 || index >= this.length) return null;
+    if (index < 0 || index >= this.length) return undefined;
     if (index === 0) return this.shift();
     if (index === this.length - 1) return this.pop();
 
@@ -116,5 +116,32 @@ export default class SinglyLinkedList {
     this.length--;
 
     return target;
+  }
+
+  reverse() {
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    let prev = null;
+    let next;
+
+    for (let i = 0; i < this.length; i++) {
+      next = current.next;
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    return this;
+  }
+
+  print() {
+    let arr = [];
+    let current = this.head;
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+    console.log(arr);
   }
 }
