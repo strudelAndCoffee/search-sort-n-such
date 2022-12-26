@@ -98,4 +98,10 @@ export default class DoublyLinkedList {
 
     return current;
   }
+  set(index, val) {
+    let node = this.get(index);
+    if (node !== undefined) return false;
+    node.val = val;
+    return true;
+  }
 }
