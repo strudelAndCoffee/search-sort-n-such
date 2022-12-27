@@ -1,3 +1,12 @@
+// Doubly Linked Lists are best for fast searching
+// They take up more memory, so not ideal if storage is a concern
+
+// Big O (time):
+// -- insert: O(1)
+// -- remove: O(1)
+// -- search: O(1) to O(N)
+// -- access: O(1) to O(N)
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -83,14 +92,14 @@ export default class DoublyLinkedList {
     if (index <= this.length / 2) {
       current = this.head;
       count = 0;
-      while (count <= index) {
+      while (count !== index) {
         current = current.next;
         count++;
       }
     } else {
       current = this.tail;
       count = this.length - 1;
-      while (count > index) {
+      while (count !== index) {
         current = current.prev;
         count--;
       }
@@ -100,7 +109,7 @@ export default class DoublyLinkedList {
   }
   set(index, val) {
     let node = this.get(index);
-    if (node !== undefined) return false;
+    if (!node) return false;
     node.val = val;
     return true;
   }

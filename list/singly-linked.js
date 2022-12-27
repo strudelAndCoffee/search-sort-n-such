@@ -2,10 +2,10 @@
 // Not ideal for random access, where indexed Arrays excel
 
 // Big O (time):
-// -- insert: O(1)
-// -- remove: O(1) to O(N), if near beginning or end
-// -- search: O(1) to O(N)
-// -- access: O(1) to O(N)
+// -- insert: 0(N)
+// -- remove: O(N)
+// -- search: O(N)
+// -- access: O(N)
 
 class Node {
   constructor(val) {
