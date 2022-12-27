@@ -87,7 +87,7 @@ export default class SinglyLinkedList {
 
     let node = this.head;
     let count = 0;
-    while (count < index) {
+    while (count !== index) {
       node = node.next;
       count++;
     }
@@ -133,6 +133,7 @@ export default class SinglyLinkedList {
     let current = this.head;
     this.head = this.tail;
     this.tail = current;
+
     let prev = null;
     let next;
 
