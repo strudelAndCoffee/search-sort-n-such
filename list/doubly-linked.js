@@ -1,83 +1,86 @@
-// Singly Linked Lists are best for fast insertion/removal
-// Not ideal for random access, where indexed Arrays excel
+// Doubly Linked Lists are best for fast searching
+// They take up more memory, so not ideal if storage is a concern
 
 // Big O (time):
-// -- insert: 0(N)
-// -- remove: O(N)
-// -- search: O(N)
-// -- access: O(N)
+// -- insert: O(1)
+// -- remove: O(1)
+// -- search: O(1) to O(N)
+// -- access: O(1) to O(N)
 
 class Node {
   constructor(val) {
     this.val = val;
     this.next = null;
+    this.prev = null;
   }
 }
 
-export default class SinglyLinkedList {
+export default class DoublyLinkedList {
   constructor() {
-    this.length = 0;
     this.head = null;
     this.tail = null;
+    this.length = 0;
   }
 
   push(val) {
     let node = new Node(val);
 
-    if (!this.head) {
+    if (this.length === 0) {
       this.head = node;
-      this.tail = this.head;
+      this.tail = node;
     } else {
       this.tail.next = node;
+      node.prev = this.tail;
       this.tail = node;
     }
     this.length++;
+
     return this;
   }
   unshift(val) {
     let node = new Node(val);
 
-    if (!this.head) {
+    if (this.length === 0) {
       this.head = node;
-      this.tail = this.head;
+      this.tail = node;
     } else {
+      this.head.prev = node;
       node.next = this.head;
       this.head = node;
     }
     this.length++;
+
     return this;
   }
   pop() {
     if (this.length === 0) return undefined;
 
-    let current = this.head;
-    let prev = current;
-    while (current.next) {
-      prev = current;
-      current = prev.next;
-    }
-
-    this.tail = prev;
-    this.tail.next = null;
-    this.length--;
-    if (this.length === 0) {
+    let popped = this.tail;
+    if (this.length === 1) {
       this.head = null;
       this.tail = null;
+    } else {
+      this.tail = popped.prev;
+      this.tail.next = null;
+      popped.prev = null;
     }
+    this.length--;
 
-    return current;
+    return popped;
   }
   shift() {
     if (this.length === 0) return undefined;
 
     let shifted = this.head;
-    this.head = shifted.next;
-    this.length--;
-    if (this.length === 0) {
+    if (this.length === 1) {
       this.head = null;
       this.tail = null;
+    } else {
+      this.head = shifted.next;
+      this.head.prev = null;
+      shifted.next = null;
     }
-    shifted.next = null;
+    this.length--;
 
     return shifted;
   }
@@ -85,19 +88,28 @@ export default class SinglyLinkedList {
   get(index) {
     if (index < 0 || index >= this.length) return undefined;
 
-    let node = this.head;
-    let count = 0;
-    while (count !== index) {
-      node = node.next;
-      count++;
+    let count, current;
+    if (index <= this.length / 2) {
+      current = this.head;
+      count = 0;
+      while (count !== index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      current = this.tail;
+      count = this.length - 1;
+      while (count !== index) {
+        current = current.prev;
+        count--;
+      }
     }
 
-    return node;
+    return current;
   }
   set(index, val) {
     let node = this.get(index);
-    if (node == null) return false;
-
+    if (!node) return false;
     node.val = val;
     return true;
   }
@@ -109,8 +121,11 @@ export default class SinglyLinkedList {
     let node = new Node(val);
     let prev = this.get(index - 1);
     let next = prev.next;
+
     prev.next = node;
+    node.prev = prev;
     node.next = next;
+    next.prev = node;
     this.length++;
 
     return true;
@@ -120,10 +135,14 @@ export default class SinglyLinkedList {
     if (index === 0) return this.shift();
     if (index === this.length - 1) return this.pop();
 
-    let prev = this.get(index - 1);
-    let target = prev.next;
-    prev.next = target.next;
+    let target = this.get(index);
+    let prev = target.prev;
+    let next = target.next;
+
+    prev.next = next;
+    next.prev = prev;
     target.next = null;
+    target.prev = null;
     this.length--;
 
     return target;
@@ -134,16 +153,18 @@ export default class SinglyLinkedList {
     this.head = this.tail;
     this.tail = current;
 
-    let prev = null;
     let next;
+    let prev = null;
+    current = this.head;
 
-    for (let i = 0; i < this.length; i++) {
-      next = current.next;
-      current.next = prev;
-      prev = current;
+    while (current.prev) {
+      next = current.prev;
+      current.prev = prev;
+      current.next = next;
       current = next;
     }
 
+    this.tail.next = null;
     return this;
   }
 
