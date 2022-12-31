@@ -4,18 +4,18 @@
 // Big O (time) = best: O(N), worst: O(N^2), average: (N^2)
 // Big O (space) = O(1)
 
-import { swap } from '../helpers/utils.js';
+import { swap } from '../helpers/utils.js'
 
 export default function bubbleSort(arr) {
-  let noSwap;
-  for (let i = arr.length; i > 0; i--) {
-    noSwap = true;
+  let noSwap
+  for (let i = arr.length - 1; i > 0; i--) {
+    noSwap = true
     for (let j = 0; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
-        swap(arr, j, j + 1);
-        noSwap = false;
+        swap(arr, j, j + 1)
+        noSwap = false
       }
     }
-    if (noSwap) break;
+    if (noSwap) break
   }
 }
