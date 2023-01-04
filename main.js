@@ -8,6 +8,5 @@
 //   radixSort,
 // } from './sort/index.js';
 // import { randomBetween, shuffle, findMedian } from './helpers/utils.js';
-import { SinglyLinkedList, DoublyLinkedList } from './list/index.js';
-
-const list = new DoublyLinkedList();
+// import { SinglyLinkedList, DoublyLinkedList } from './list/index.js';
+import { Stack, Queue } from './queue/index.js'
