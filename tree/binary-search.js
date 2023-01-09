@@ -39,4 +39,31 @@ export default class BinarySearchTree {
       }
     }
   }
+
+  search(val) {
+    if (this.root === null) return false
+
+    let current = this.root
+    let found = false
+    while (current !== null && !found) {
+      if (val < current.value) current = current.left
+      else if (val > current.value) current = current.right
+      else return true
+    }
+
+    return false
+  }
+
+  find(val) {
+    if (this.root === null) return null
+
+    let current = this.root
+    while (current !== null) {
+      if (val < current.value) current = current.left
+      else if (val > current.value) current = current.right
+      else return current
+    }
+
+    return undefined
+  }
 }
