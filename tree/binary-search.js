@@ -1,5 +1,6 @@
 // Binary Search Trees are best for number data and not storing repeat numbers
 // Good for fast insertion and searching
+// Not ideal for consistently increasing number values, root should be median value if possible
 
 // Big O (time)
 // -- Insertion: O(log N)
