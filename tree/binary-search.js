@@ -1,3 +1,10 @@
+// Binary Search Trees are best for number data and not storing repeat numbers
+// Good for fast insertion and searching
+
+// Big O (time)
+// -- Insertion: O(log N)
+// -- Searching: O(log N)
+
 class Node {
   constructor(value) {
     this.value = value
