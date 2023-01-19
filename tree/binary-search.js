@@ -74,4 +74,76 @@ export default class BinarySearchTree {
 
     return undefined
   }
+
+  // best for trees with narrow branching
+  breadthFirstSearch(start = null) {
+    if (this.root === null) return null
+
+    let data = []
+    let queue = []
+    let node = start ? start : this.root
+    queue.push(node)
+
+    while (queue.length) {
+      node = queue.shift()
+      data.push(node.value)
+      if (node.left) queue.push(node.left)
+      if (node.right) queue.push(node.right)
+    }
+
+    return data
+  }
+
+  // best for trees with wide branching
+  depthFirstSearchPreOrder(start = null) {
+    // returns data from root to leaves
+    // preserves original order of root and branching of tree
+    if (this.root === null) return null
+
+    let data = []
+    let current = start ? start : this.root
+
+    function traverse(node) {
+      data.push(node.value)
+      if (node.left) traverse(node.left)
+      if (node.right) traverse(node.right)
+    }
+    traverse(current)
+
+    return data
+  }
+
+  depthFirstSearchPostOrder(start = null) {
+    // returns data from leaves to root
+    if (this.root === null) return null
+
+    let data = []
+    let current = start ? start : this.root
+
+    function traverse(node) {
+      if (node.left) traverse(node.left)
+      if (node.right) traverse(node.right)
+      data.push(node.value)
+    }
+    traverse(current)
+
+    return data
+  }
+
+  depthFirstSearchInOrder(start = null) {
+    // returns data in order of values
+    if (this.root === null) return null
+
+    let data = []
+    let current = start ? start : this.root
+
+    function traverse(node) {
+      if (node.left) traverse(node.left)
+      data.push(node.value)
+      if (node.right) traverse(node.right)
+    }
+    traverse(current)
+
+    return data
+  }
 }
