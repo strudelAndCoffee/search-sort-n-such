@@ -6,6 +6,8 @@
 // -- Insertion: O(log N)
 // -- Searching: O(log N)
 
+import { Queue } from '../queue/index.js'
+
 class Node {
   constructor(value) {
     this.value = value
@@ -80,15 +82,15 @@ export default class BinarySearchTree {
     if (this.root === null) return null
 
     let data = []
-    let queue = []
+    let queue = new Queue()
     let node = start ? start : this.root
-    queue.push(node)
+    queue.enqueue(node)
 
     while (queue.length) {
-      node = queue.shift()
+      node = queue.dequeue()
       data.push(node.value)
-      if (node.left) queue.push(node.left)
-      if (node.right) queue.push(node.right)
+      if (node.left) queue.enqueue(node.left)
+      if (node.right) queue.enqueue(node.right)
     }
 
     return data
