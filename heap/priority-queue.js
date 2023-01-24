@@ -1,22 +1,31 @@
-export default class MaxBinaryHeap {
+class Node {
+  constructor(value, priority) {
+    this.value = value
+    this.priority = priority
+  }
+}
+
+export default class PriorityQueue {
   constructor() {
     this.values = []
   }
 
-  insert(val) {
-    this.values.push(val)
+  // Sets priority on decreasing order, i.e. lower integer = higher priority
+  enqueue(val, priority) {
+    let node = new Node(val, priority)
+    this.values.push(node)
     this.bubble_up()
   }
 
-  extract_max() {
-    const max = this.values[0]
+  dequeue() {
+    const node = this.values[0]
     const end = this.values.pop()
     if (this.values.length > 0) {
       this.values[0] = end
       this.sift_down()
     }
 
-    return max
+    return node
   }
 
   bubble_up() {
@@ -26,7 +35,8 @@ export default class MaxBinaryHeap {
     while (index > 0) {
       let parent_index = Math.floor((index - 1) / 2)
       let parent = this.values[parent_index]
-      if (this.values[index] <= this.values[parent_index]) break
+      if (this.values[index].priority >= this.values[parent_index].priority)
+        break
 
       this.values[parent_index] = element
       this.values[index] = parent
@@ -46,14 +56,14 @@ export default class MaxBinaryHeap {
       let swap = null
 
       if (left_i < length) {
-        left_child = this.values[left_i]
-        if (left_child > element) swap = left_i
+        left_child = this.values[left_i].priority
+        if (left_child < element.priority) swap = left_i
       }
       if (right_i < length) {
-        right_child = this.values[right_i]
+        right_child = this.values[right_i].priority
         if (
-          (swapped === null && right_child > element) ||
-          (swapped !== null && right_child > left_child)
+          (swapped === null && right_child < element.priority) ||
+          (swapped !== null && right_child < left_child.priority)
         )
           swap = right_i
       }

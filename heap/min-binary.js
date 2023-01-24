@@ -13,7 +13,7 @@ export default class MinBinaryHeap {
     const end = this.values.pop()
     if (this.values.length > 0) {
       this.values[0] = end
-      this.bubble_down()
+      this.sift_down()
     }
 
     return min
@@ -26,7 +26,7 @@ export default class MinBinaryHeap {
     while (index > 0) {
       let parent_index = Math.floor((index - 1) / 2)
       let parent = this.values[parent_index]
-      if (this.values[index] > this.values[parent_index]) break
+      if (this.values[index] >= this.values[parent_index]) break
 
       this.values[parent_index] = element
       this.values[index] = parent
@@ -34,7 +34,7 @@ export default class MinBinaryHeap {
     }
   }
 
-  bubble_down() {
+  sift_down() {
     const length = this.values.length
     const element = this.values[0]
     let index = 0
