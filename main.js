@@ -12,9 +12,4 @@
 // import { Stack, Queue } from './queue/index.js'
 // import { BinarySearchTree } from './tree/index.js'
 // import { MaxBinaryHeap } from './heap/index.js'
-import HashTable from './hash_tables/hash-table.js'
-
-const table = new HashTable()
-table._hash('hi')
-table._hash(5)
-table._hash(0.0004)
+// import HashTable from './hash_table/hash-table.js'
