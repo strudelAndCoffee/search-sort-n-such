@@ -1,4 +1,4 @@
-import { Stack } from '../queue/index.js'
+import { Stack, Queue } from '../queue/index.js'
 
 export default class Graph {
   constructor() {
@@ -10,8 +10,8 @@ export default class Graph {
   }
 
   addEdge(v1, v2) {
-    if (!this.adjacency_list[v1]) this.addVertex(v1)
-    if (!this.adjacency_list[v2]) this.addVertex(v2)
+    // if (!this.adjacency_list[v1]) this.addVertex(v1)
+    // if (!this.adjacency_list[v2]) this.addVertex(v2)
 
     if (!this.adjacency_list[v1].includes(v2)) this.adjacency_list[v1].push(v2)
     if (!this.adjacency_list[v2].includes(v1)) this.adjacency_list[v2].push(v1)
@@ -38,8 +38,8 @@ export default class Graph {
     const dfs = (vertex) => {
       if (!vertex) return null
 
-      visited[vertex] = 1
       result.push(vertex)
+      visited[vertex] = true
       this.adjacency_list[vertex].forEach((v) => {
         if (!visited[v]) return dfs(v)
       })
@@ -53,18 +53,41 @@ export default class Graph {
     const result = []
     const visited = {}
     const stack = new Stack()
+
     stack.push(start)
-    visited[start] = 1
+    visited[start] = true
 
     let vertex
     while (stack.size) {
       vertex = stack.pop()
       result.push(vertex)
-
       this.adjacency_list[vertex].forEach((v) => {
         if (!visited[v]) {
-          visited[v] = 1
+          visited[v] = true
           stack.push(v)
+        }
+      })
+    }
+
+    return result
+  }
+
+  breadthFirstTraversal(start) {
+    const result = []
+    const visited = {}
+    const queue = new Queue()
+
+    queue.enqueue(start)
+    visited[start] = true
+
+    let vertex
+    while (queue.size) {
+      vertex = queue.dequeue()
+      result.push(vertex)
+      this.adjacency_list[vertex].forEach((v) => {
+        if (!visited[v]) {
+          visited[v] = true
+          queue.enqueue(v)
         }
       })
     }

@@ -22,7 +22,7 @@ export default class Queue {
 
   enqueue(val) {
     let node = new Node(val)
-    if (!this.fist) {
+    if (!this.first) {
       this.first = node
       this.last = node
     } else {

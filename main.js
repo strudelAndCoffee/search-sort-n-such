@@ -31,4 +31,4 @@ graph.addEdge('D', 'E')
 graph.addEdge('D', 'F')
 graph.addEdge('E', 'F')
 
-console.log(graph.depthFirstTraversalIterative('A'))
+console.log(graph.breadthFirstTraversal('A'))
