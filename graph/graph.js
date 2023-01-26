@@ -1,3 +1,5 @@
+import { Stack } from '../queue/index.js'
+
 export default class Graph {
   constructor() {
     this.adjacency_list = {}
@@ -30,9 +32,8 @@ export default class Graph {
   }
 
   depthFirstTraversalRecursive(start) {
-    let result = []
-    let visited = {}
-    // let adjacency_list = this.adjacency_list
+    const result = []
+    const visited = {}
 
     const dfs = (vertex) => {
       if (!vertex) return null
@@ -44,6 +45,29 @@ export default class Graph {
       })
     }
     dfs(start)
+
+    return result
+  }
+
+  depthFirstTraversalIterative(start) {
+    const result = []
+    const visited = {}
+    const stack = new Stack()
+    stack.push(start)
+    visited[start] = 1
+
+    let vertex
+    while (stack.size) {
+      vertex = stack.pop()
+      result.push(vertex)
+
+      this.adjacency_list[vertex].forEach((v) => {
+        if (!visited[v]) {
+          visited[v] = 1
+          stack.push(v)
+        }
+      })
+    }
 
     return result
   }
