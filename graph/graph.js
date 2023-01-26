@@ -28,4 +28,23 @@ export default class Graph {
     this.adjacency_list[v].forEach((e) => this.removeEdge(e, v))
     delete this.adjacency_list[v]
   }
+
+  depthFirstTraversalRecursive(start) {
+    let result = []
+    let visited = {}
+    // let adjacency_list = this.adjacency_list
+
+    const dfs = (vertex) => {
+      if (!vertex) return null
+
+      visited[vertex] = 1
+      result.push(vertex)
+      this.adjacency_list[vertex].forEach((v) => {
+        if (!visited[v]) return dfs(v)
+      })
+    }
+    dfs(start)
+
+    return result
+  }
 }
