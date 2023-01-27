@@ -17,6 +17,21 @@ export default class PriorityQueue {
     this.bubble_up()
   }
 
+  bubble_up() {
+    let index = this.values.length - 1
+    const element = this.values[index]
+
+    while (index > 0) {
+      let parent_index = Math.floor((index - 1) / 2)
+      let parent = this.values[parent_index]
+      if (element.priority >= parent.priority) break
+
+      this.values[parent_index] = element
+      this.values[index] = parent
+      index = parent_index
+    }
+  }
+
   dequeue() {
     const node = this.values[0]
     const end = this.values.pop()
@@ -26,22 +41,6 @@ export default class PriorityQueue {
     }
 
     return node
-  }
-
-  bubble_up() {
-    let index = this.values.length - 1
-    const element = this.values[index]
-
-    while (index > 0) {
-      let parent_index = Math.floor((index - 1) / 2)
-      let parent = this.values[parent_index]
-      if (this.values[index].priority >= this.values[parent_index].priority)
-        break
-
-      this.values[parent_index] = element
-      this.values[index] = parent
-      index = parent_index
-    }
   }
 
   sift_down() {
@@ -56,14 +55,14 @@ export default class PriorityQueue {
       let swap = null
 
       if (left_i < length) {
-        left_child = this.values[left_i].priority
-        if (left_child < element.priority) swap = left_i
+        left_child = this.values[left_i]
+        if (left_child.priority < element.priority) swap = left_i
       }
       if (right_i < length) {
-        right_child = this.values[right_i].priority
+        right_child = this.values[right_i]
         if (
-          (swapped === null && right_child < element.priority) ||
-          (swapped !== null && right_child < left_child.priority)
+          (swap === null && right_child.priority < element.priority) ||
+          (swap !== null && right_child.priority < left_child.priority)
         )
           swap = right_i
       }

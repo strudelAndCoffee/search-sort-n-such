@@ -1,3 +1,4 @@
-import Graph from './graph.js'
+import UnweightedUndirectedGraph from './unweighted-undirected-graph.js'
+import WeightedUndirectedGraph from './weighted-undirected-graph.js'
 
-export { Graph }
+export { UnweightedUndirectedGraph, WeightedUndirectedGraph }

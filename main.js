@@ -13,9 +13,9 @@
 // import { BinarySearchTree } from './tree/index.js'
 // import { MaxBinaryHeap } from './heap/index.js'
 // import HashTable from './hash_table/hash-table.js'
-import { Graph } from './graph/index.js'
+import { WeightedUndirectedGraph } from './graph/index.js'
 
-const graph = new Graph()
+const graph = new WeightedUndirectedGraph()
 graph.addVertex('A')
 graph.addVertex('B')
 graph.addVertex('C')
@@ -23,12 +23,13 @@ graph.addVertex('D')
 graph.addVertex('E')
 graph.addVertex('F')
 
-graph.addEdge('A', 'B')
-graph.addEdge('A', 'C')
-graph.addEdge('B', 'D')
-graph.addEdge('C', 'E')
-graph.addEdge('D', 'E')
-graph.addEdge('D', 'F')
-graph.addEdge('E', 'F')
+graph.addEdge('A', 'B', 4)
+graph.addEdge('A', 'C', 2)
+graph.addEdge('B', 'E', 3)
+graph.addEdge('C', 'D', 2)
+graph.addEdge('C', 'F', 4)
+graph.addEdge('D', 'E', 3)
+graph.addEdge('D', 'F', 1)
+graph.addEdge('E', 'F', 1)
 
-console.log(graph.breadthFirstTraversal('A'))
+console.log(graph.dijkstraShortestPath('A', 'E'))

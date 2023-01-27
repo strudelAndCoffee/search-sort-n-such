@@ -1,6 +1,6 @@
 import { Stack, Queue } from '../queue/index.js'
 
-export default class Graph {
+export default class UnweightedUndirectedGraph {
   constructor() {
     this.adjacency_list = {}
   }
@@ -10,11 +10,10 @@ export default class Graph {
   }
 
   addEdge(v1, v2) {
-    // if (!this.adjacency_list[v1]) this.addVertex(v1)
-    // if (!this.adjacency_list[v2]) this.addVertex(v2)
+    if (!this.adjacency_list[v1] || !this.adjacency_list[v2]) return
 
-    if (!this.adjacency_list[v1].includes(v2)) this.adjacency_list[v1].push(v2)
-    if (!this.adjacency_list[v2].includes(v1)) this.adjacency_list[v2].push(v1)
+    this.adjacency_list[v1].push(v2)
+    this.adjacency_list[v2].push(v1)
   }
 
   removeEdge(v1, v2) {
